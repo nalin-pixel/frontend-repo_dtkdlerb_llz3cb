@@ -15,6 +15,7 @@
   html {
     font-family: var(--font-sans);
     font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-[#0b0b12] text-white;
   }
 
   body {
@@ -22,25 +23,26 @@
   }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
-@layer utilities {
-  .animate-in {
-    animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
+@layer components {
+  .chip {
+    @apply rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-white/80 backdrop-blur;
   }
+  .btn-primary {
+    @apply rounded-xl bg-gradient-to-br from-cyan-400 to-fuchsia-400 px-6 py-3 font-semibold text-black shadow-2xl shadow-cyan-500/20 transition-transform;
+  }
+  .btn-ghost {
+    @apply rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-semibold text-white/90 backdrop-blur hover:bg-white/10;
+  }
+  .glass {
+    @apply backdrop-blur-xl bg-white/10 border border-white/10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)] rounded-2xl;
+  }
+  .particle {
+    @apply absolute h-1.5 w-1.5 rounded-full bg-white/60 shadow-[0_0_12px_rgba(255,255,255,0.6)];
+    animation: float 6s ease-in-out infinite;
+  }
+}
 
-  .animate-out {
-    animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
-  }
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: .8; }
+  50% { transform: translateY(-12px) scale(1.2); opacity: 1; }
 }
